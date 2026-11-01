@@ -1,0 +1,77 @@
+---
+title: "Progress Memo 1: E-Commerce Consumer Behavior Analysis"
+author: "Audrey Tomen"
+format: html
+editor: visual
+---
+
+## Project Overview
+
+For my final project, I plan to conduct an exploratory data analysis of e-commerce consumer behavior, focusing on how customer demographics, shopping preferences, and marketing-related factors relate to purchasing decisions. I am particularly interested in exploring whether factors such as age, income level, brand loyalty, and discount usage are associated with differences in purchasing behavior.
+
+Through this analysis, I hope to better understand the characteristics and preferences of different consumer groups and identify patterns that could be useful for marketing and customer strategy.
+
+### Data Source and Description
+
+I plan to use the *Ecommerce Consumer Behavior Analysis Data* dataset, published by Salahuddin Ahmed Shuvo on Kaggle.
+
+**Dataset:** <https://www.kaggle.com/datasets/salahuddinahmedshuvo/ecommerce-consumer-behavior-analysis-data>
+
+The dataset contains **1,000 observations and 28 variables**, including customer demographics, purchase amounts, shopping channels, brand loyalty, product ratings, discount usage, and customer satisfaction.
+
+The dataset includes categorical, numerical, and logical variables, providing opportunities to explore relationships between different aspects of consumer behavior. I believe its variety of variables and observations makes it appropriate for an exploratory data analysis.
+
+### Data Quality and Complexity
+
+I successfully imported the dataset into R using read_csv() and conducted preliminary data-quality checks.
+
+My initial findings include:
+
+- **Observations:** 1,000
+
+- **Variables:** 28
+
+- **Missing values:** 0 detected using is.na()
+
+- **Duplicate rows:** 0
+
+- **Variable types:** Character, numerical, and logical
+
+Although no NA values were detected, some variables may require additional cleaning. For example, Purchase_Amount was imported as a character variable because its values contain dollar signs, while Time_of_Purchase was also imported as a character variable despite representing dates.
+
+Additionally, Social_Media_Influence and Engagement_with_Ads contain a category labeled "None," which appears to represent an absence of influence or engagement rather than missing data. I plan to further investigate the consistency and meaning of categorical values during the cleaning process.
+
+### GitHub Repository and Data Import
+
+I created a GitHub repository for my final project and organized the dataset within a data/raw/ directory to preserve the original data.
+
+**GitHub Repository:** <https://github.com/audreytomen/STAT301_Final_Project>
+
+I successfully imported the dataset into R using the following code:
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+customers <- read_csv("data/raw/Ecommerce_Consumer_Behavior_Analysis_Data.csv")
+
+glimpse(customers)
+
+# Check dataset complexity
+nrow(customers)
+ncol(customers)
+
+# Check missing values
+sum(is.na(customers))
+
+# Check duplicate rows
+nrow(customers) - nrow(distinct(customers))
+```
+
+The import was successful, and the initial inspection confirmed that the dataset contains 1,000 observations and 28 variables.
+
+### Next Steps
+
+My next steps are to further investigate data quality, clean and format variables where necessary, and begin exploring relationships between customer characteristics, marketing factors, and purchasing behavior. I plan to use data visualizations and summary statistics to identify patterns and develop more specific research questions as my analysis progresses.
